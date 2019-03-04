@@ -43,11 +43,11 @@ class Api::V001::CommentsController < ApplicationController
 private
 
   def comment_params
-    params.require(:comment).permit(:content, :user_id, :document_id)
+    params.require(:comment).permit(:content, :user_id, :document_id, :id)
   end
 
   def find_comment
-    @comment = Comment.find_by(params[:id])
+    @comment = Comment.find_by(id: params[:id])
   end
 end
 

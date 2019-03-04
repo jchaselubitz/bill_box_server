@@ -34,10 +34,10 @@ class Api::V001::WorkspacesController < ApplicationController
   
   private
     def workspace_params
-        params.require(:workspace).permit(:name)
+        params.require(:workspace).permit(:name, :id)
     end
 
     def find_workspace
-        @workspace = Workspace.find_by(params[:id])
+        @workspace = Workspace.find_by(id: params[:id])
     end
 end

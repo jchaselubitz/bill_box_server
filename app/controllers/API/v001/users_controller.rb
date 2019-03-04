@@ -37,10 +37,10 @@ end
   
   private
     def user_params
-        params.require(:user).permit(:name, :username, :email, :password)
+        params.require(:user).permit(:name, :username, :email, :password, :id)
     end
 
     def find_user
-        @user = User.find_by(params[:id])
+        @user = User.find_by(id: params[:id])
     end
 end

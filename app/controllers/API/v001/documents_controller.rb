@@ -41,13 +41,6 @@ end
       render json: { error: "Unable to create document." }, status: 400
     end
   end
-
-  {
-    document: {
-      name: 'bla',
-      workspace_id: 2
-    }
-  }
   
   
   private

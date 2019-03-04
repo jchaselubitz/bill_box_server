@@ -28,10 +28,10 @@ class Api::V001::TagsController < ApplicationController
 private
 
   def tag_params
-    params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name, :id)
   end
 
   def find_tag
-    @tag = Tag.find_by(params[:id])
+    @tag = Tag.find_by(id: params[:id])
   end
 end
