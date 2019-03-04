@@ -41,15 +41,22 @@ end
       render json: { error: "Unable to create document." }, status: 400
     end
   end
+
+  {
+    document: {
+      name: 'bla',
+      workspace_id: 2
+    }
+  }
   
   
   private
     def document_params
-        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline)
+        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id)
     end
 
     def find_document
-        @document = Document.find_by(params[:id])
+        @document = Document.find_by(id: params[:id])
     end
 
 end
