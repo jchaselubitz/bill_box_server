@@ -1,12 +1,15 @@
-class API::v001::WorkspacesController < ApplicationController
-  before_action :find_workspace, only: [:show, :edit, :update, :toggle_status, :toggle_claim, :toggle_pinned, :destroy]
+class Api::V001::WorkspacesController < ApplicationController
+  before_action :find_workspace, only: [:show, :edit, :update, :destroy]
 
   def show
-
   end
   
   def create
     @workspace = Workspace.new(params[:name])
+    if @workspace.valid?
+      @workspace.save
+    else
+      console.log("error")
   end
 
   def destroy

@@ -1,2 +1,5 @@
-class API::v001::DocTagsController < ApplicationController
+class Api::V001::DocTagsController < ApplicationController
+  def index
+    render json: {message: 'Hello!'}
+  end
 end
