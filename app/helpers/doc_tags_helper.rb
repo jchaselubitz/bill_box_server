@@ -1,0 +1,2 @@
+module DocTagsHelper
+end
