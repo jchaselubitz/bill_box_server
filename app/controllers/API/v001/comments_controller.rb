@@ -11,6 +11,7 @@ class Api::V001::CommentsController < ApplicationController
       render json: @comment
     else 
       render json: { error: "Unable to find comment." }, status: 400
+    end
   end
 
   def create
@@ -36,6 +37,7 @@ class Api::V001::CommentsController < ApplicationController
   def destroy
     if @comment.destroy
       render json: { error: "Unable to delete comment." }, status: 400
+    end
   end
 
 private

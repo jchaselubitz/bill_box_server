@@ -45,7 +45,7 @@ end
   
   private
     def document_params
-        params.require(:document).permit(:name, :documentname)
+        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline)
     end
 
     def find_document

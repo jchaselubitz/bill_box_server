@@ -3,6 +3,7 @@ class Api::V001::TagsController < ApplicationController
 
   def index
     @tags = Tag.all 
+    render json: @tags
   end
 
   def create
