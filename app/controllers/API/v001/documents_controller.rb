@@ -16,6 +16,7 @@ class Api::V001::DocumentsController < ApplicationController
   end
   
   def create
+     
     @document = Document.create(document_params)
     if @document.valid?
       render json: @document
@@ -44,6 +45,7 @@ end
   
   
   private
+  
     def document_params
         params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id)
     end
