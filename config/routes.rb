@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :user_workspaces
       resources :workspaces
       resources :users
+      post 'upload_file/:id', to: "documents#upload_file"
     end
   end
 end

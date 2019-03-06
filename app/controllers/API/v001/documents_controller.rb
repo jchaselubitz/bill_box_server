@@ -1,5 +1,5 @@
 class Api::V001::DocumentsController < ApplicationController
-  before_action :find_document, only: [:show, :edit, :update, :destroy]
+  before_action :find_document, only: [:show, :edit, :update, :destroy, :upload_file]
 
 
   def index
@@ -16,8 +16,8 @@ class Api::V001::DocumentsController < ApplicationController
   end
   
   def create
-     
     @document = Document.create(document_params)
+  #  @document.image.attach(params[:document][:image])
     if @document.valid?
       render json: @document
     else 
@@ -25,9 +25,16 @@ class Api::V001::DocumentsController < ApplicationController
     end
 end
 
+  def upload_file
+    # @document.image.attach(params[:document][:image])
+    puts params 
+  end 
+
 
   def update
+    byebug
     @document.update(document_params)
+    ##@document.image.attach(params[:document][:image])
       if @document.valid? #&& @document.image.attached?
         render json: @document
       else 
@@ -47,7 +54,7 @@ end
   private
   
     def document_params
-        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id)
+        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id, :image)
     end
 
     def find_document

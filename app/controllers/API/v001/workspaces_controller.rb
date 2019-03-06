@@ -10,7 +10,9 @@ class Api::V001::WorkspacesController < ApplicationController
   end
   
   def create
-    @workspace = Workspace.new(params[:name])
+
+    @workspace = Workspace.new(name: workspace_params[:name])
+    @workspace.users << User.find(workspace_params[:user])
     if @workspace.valid?
       @workspace.save
      render json: @workspace
@@ -34,7 +36,7 @@ class Api::V001::WorkspacesController < ApplicationController
   
   private
     def workspace_params
-        params.require(:workspace).permit(:name, :id)
+        params.require(:workspace).permit(:name, :id, :user)
     end
 
     def find_workspace
