@@ -32,7 +32,6 @@ end
 
 
   def update
-    byebug
     @document.update(document_params)
     ##@document.image.attach(params[:document][:image])
       if @document.valid? #&& @document.image.attached?
@@ -54,7 +53,7 @@ end
   private
   
     def document_params
-        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id, :image)
+        params.require(:document).permit(:name, :workspace_id, :doctext, :paid, :deadline, :id, :image, :link)
     end
 
     def find_document
