@@ -33,6 +33,17 @@ users = User.create([
   { name: 'Minha', password: "321", email: "minha@test.com", username: "KooKoo" }
 ])
 
+
+jake = User.first
+shane = User.second 
+
+
+jake.workspaces << Workspace.first 
+jake.workspaces << Workspace.second 
+jake.workspaces << Workspace.third 
+shane.workspaces << Workspace.third 
+shane.workspaces << Workspace.fourth 
+
 tags = Tag.create([
   {name: "bills"},
   {name: "receipts"}

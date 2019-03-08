@@ -10,7 +10,6 @@ class Api::V001::WorkspacesController < ApplicationController
   end
   
   def create
-
     @workspace = Workspace.new(name: workspace_params[:name])
     @workspace.users << User.find(workspace_params[:user])
     if @workspace.valid?
@@ -22,7 +21,9 @@ class Api::V001::WorkspacesController < ApplicationController
   end
 
   def update
-    if @workspace.update
+    
+    if @workspace.update(workspace_params)
+      #@workspace.users << User.find(workspace_params[:user])
      render json: @workspace
     else 
       render json: { error: "Unable to update workspace." }, status: 400
@@ -36,7 +37,7 @@ class Api::V001::WorkspacesController < ApplicationController
   
   private
     def workspace_params
-        params.require(:workspace).permit(:name, :id, :user)
+        params.require(:workspace).permit(:name, :id, :users)
     end
 
     def find_workspace
